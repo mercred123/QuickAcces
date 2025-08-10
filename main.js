@@ -1,5 +1,8 @@
-const { app, Tray, shell, BrowserWindow, ipcMain} = require("electron");
+const { app, Tray, shell, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
+
+let Store;
+
 const {
   OpennerApp,
   CleanerTrash,
@@ -11,10 +14,27 @@ let tray = null;
 let popupWindow = null;
 
 const gotTheLock = app.requestSingleInstanceLock();
-
 if (!gotTheLock) {
   app.quit();
 }
+
+(async () => {
+  Store = (await import("electron-store")).default;
+  store = new Store();
+
+  ipcMain.handle("get-settings", () => {
+    return store.store;
+  });
+
+  ipcMain.handle("set-setting", (event, key, value) => {
+    store.set(key, value);
+    return true;
+  });
+})();
+
+ipcMain.handle('get-app-version', () => {
+  return app.getVersion();
+});
 
 app.whenReady().then(() => {
   popupWindow = new BrowserWindow({
@@ -33,6 +53,8 @@ app.whenReady().then(() => {
   });
 
   popupWindow.loadFile(path.join(__dirname, "popup", "popup.html"));
+
+  popupWindow.webContents.openDevTools();
 
   popupWindow.on("blur", () => {
     popupWindow.hide();

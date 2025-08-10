@@ -9,3 +9,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
     OpenChatGPT: () => ipcRenderer.send('OpenChatGPT'),
     OpenAppData: () => ipcRenderer.send('OpenAppData')
 });
+
+contextBridge.exposeInMainWorld('settingsAPI', {
+  getSettings: () => ipcRenderer.invoke('get-settings'),
+  setSetting: (key, value) => ipcRenderer.invoke('set-setting', key, value),
+  getAppVersion: () => ipcRenderer.invoke('get-app-version'),
+});

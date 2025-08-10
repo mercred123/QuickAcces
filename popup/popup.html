@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="popup.css">
-  <title>QuickAccess</title>
-</head>
-<body>
-  <div class="popup-container">
-    <h1>QuickAccess</h1>
-    <p>Accès rapide à vos actions courantes</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="popup.css" />
+    <link rel="stylesheet" href="themes.css" />
+    <title>QuickAccess</title>
+  </head>
+  <body>
+    <div class="popup-container">
+      <button id="btn_Settings" title="Paramètres" aria-label="Paramètres">
+        ⚙️
+      </button>
+      <h1>QuickAccess</h1>
+      <p>Accès rapide à vos actions courantes</p>
 
-    <button class="button" id="btn_Dustbin">🗑️ Vider la Corbeille</button>
-    <button class="button" id="btn_TrashTemp">🧹 Nettoyer %temp%</button>
-    <button class="button" id="btn_NotepadPlusPlus">📄 Ouvrir Notepad++</button>
-    <button class="button" id="btn_Paint">🖼️ Ouvrir Paint</button>
-    <button class="button" id="btn_Calc">🧮 Ouvrir Calculatrice</button>
-    <button class="button" id="btn_ChatGPT">🌍 Ouvrir ChatGPT</button>
-    <button class="button" id="btn_AppData">📁 Ouvrir dossier appData</button>
-  </div>
-</body>
+      <button class="button" id="btn_Dustbin">🗑️ Vider la Corbeille</button>
+      <button class="button" id="btn_TrashTemp">🧹 Nettoyer %temp%</button>
+      <button class="button" id="btn_NotepadPlusPlus">
+        📄 Ouvrir Notepad++
+      </button>
+      <button class="button" id="btn_Paint">🖼️ Ouvrir Paint</button>
+      <button class="button" id="btn_Calc">🧮 Ouvrir Calculatrice</button>
+      <button class="button" id="btn_ChatGPT">🌍 Ouvrir ChatGPT</button>
+      <button class="button" id="btn_AppData">📁 Ouvrir dossier appData</button>
+    </div>
+  </body>
 </html>
 <script src="popup.js"></script>

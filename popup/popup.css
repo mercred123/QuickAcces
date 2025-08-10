@@ -8,8 +8,8 @@ body {
   justify-content: center;
   margin: 0;
   padding: 0;
-  background: #1e1e1e;
-  color: #ffffff;
+  background: var(--background-color);
+  color: var(--text-color);
   user-select: none;
 }
 
@@ -19,7 +19,7 @@ body {
   padding: 34px;
   width: 280px;
   text-align: center;
-  background: #252526;
+  background:  var(--background-color-popup);
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   max-height: calc(100vh - 20px);
@@ -29,13 +29,13 @@ body {
 h1 {
   font-size: 20px;
   margin: 0 0 5px;
-  color: #4fc3f7;
+  color: var(--header-color);
 }
 
 p {
   font-size: 14px;
   margin: 0 0 15px;
-  color: #aaaaaa;
+  color: var(--paragraph-color);
 }
 
 .button {
@@ -44,24 +44,110 @@ p {
   padding: 10px;
   font-size: 15px;
   font-weight: bold;
-  background: #333333;
-  border: 1px solid #444;
+  background: var(--button-background);
+  border: 1px solid var(--button-border);
   border-radius: 8px;
-  color: #ffffff;
+  color: var(--button-color);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
 .button:hover {
-  background: #444444;
-  border-color: #555;
+  background: var(--button-hover);
+  border-color: var(--button-border-hover);
 }
 
 .button:active {
   transform: scale(0.97);
-  background: #555555;
+  background: var(--button-active);
 }
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+#btn_Settings {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 24px;
+  color: #4fc3f7;
+  user-select: none;
+  padding: 0;
+}
+
+#btn_Settings:hover {
+  color: var(--paragraph-color);
+}
+
+#btn_Back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--paragraph-color);
+  user-select: none;
+  padding: 0;
+}
+
+#btn_Back:hover {
+  color: var(--paragraph-color);
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox-label {
+  background-color: #111;
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  position: relative;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fa-moon {
+  color: #f1c40f;
+}
+
+.fa-sun {
+  color: #f39c12;
+}
+
+.checkbox-label .ball {
+  background-color: #fff;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .checkbox-label .ball {
+  transform: translateX(24px);
+}
+
+.themeToggle {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 350px;
 }
