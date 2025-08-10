@@ -1,11 +1,11 @@
 {
   "name": "quickacces_custom",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A custom Electron application for quick access",
   "main": "main.js",
   "scripts": {
-  "start": "electron .",
-  "build": "node scripts/bump-version.js && electron-builder"
+    "start": "electron .",
+    "build": "node scripts/bump-version.js && electron-builder"
   },
   "devDependencies": {
     "electron": "^30.0.0",
