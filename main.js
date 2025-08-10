@@ -54,8 +54,6 @@ app.whenReady().then(() => {
 
   popupWindow.loadFile(path.join(__dirname, "popup", "popup.html"));
 
-  popupWindow.webContents.openDevTools();
-
   popupWindow.on("blur", () => {
     popupWindow.hide();
   });
