@@ -57,10 +57,13 @@ app.whenReady().then(() => {
   popupWindow.on("blur", () => {
     popupWindow.hide();
   });
-  app.setLoginItemSettings({
+  
+  if (app.isPackaged) {
+    app.setLoginItemSettings({
     openAtLogin: true,
     path: app.getPath("exe"),
   });
+  }
 
   tray = new Tray(path.join(__dirname, "assets/", "icon3.png"));
 
