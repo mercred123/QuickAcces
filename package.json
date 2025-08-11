@@ -5,7 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "node scripts/bump-version.js && electron-builder && node scripts/organize-build.js"
+    "build": "node scripts/bump-version.js && electron-builder && node scripts/organize-build.js",
+    "devmode" : "node scripts/dev_mode.js",
+    "publishmode": "node scripts/publish_mode.js"
   },
   "devDependencies": {
     "electron": "^30.0.0",
