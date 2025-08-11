@@ -18,25 +18,23 @@ if (!gotTheLock) {
   app.quit();
 }
 
-(async () => {
-  Store = (await import("electron-store")).default;
+ipcMain.handle('get-app-version', () => {
+  return app.getVersion();
+});
+
+app.whenReady().then(async () => {
+
+  const StoreModule = await import("electron-store");
+  Store = StoreModule.default;
   store = new Store();
 
-  ipcMain.handle("get-settings", () => {
-    return store.store;
-  });
+  ipcMain.handle("get-settings", () => store.store);
 
   ipcMain.handle("set-setting", (event, key, value) => {
     store.set(key, value);
     return true;
   });
-})();
 
-ipcMain.handle('get-app-version', () => {
-  return app.getVersion();
-});
-
-app.whenReady().then(() => {
   popupWindow = new BrowserWindow({
     width: 300,
     height: 550,
