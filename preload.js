@@ -7,7 +7,18 @@ contextBridge.exposeInMainWorld('electronAPI', {
     OpennerPaint: () => ipcRenderer.send('OpennerPaint'),
     OpennerCalc: () => ipcRenderer.send('OpennerCalc'),
     OpenChatGPT: () => ipcRenderer.send('OpenChatGPT'),
-    OpenAppData: () => ipcRenderer.send('OpenAppData')
+    OpenAppData: () => ipcRenderer.send('OpenAppData'),
+    getTrashCount: () => ipcRenderer.invoke('get-trash-count'),
+    onFocusChange: (callback) => {
+      ipcRenderer.on('focus-changed', (event, isFocused) => {
+        callback(isFocused);
+      });
+    },
+    copyIP: () => ipcRenderer.invoke('copy-ip'),
+    copyPublicIP: () => ipcRenderer.invoke('copy-public-ip'),
+    getFormattedDateTime: () => ipcRenderer.invoke('get-formatted-date-time'),
+    TaskManager: () => ipcRenderer.send('TaskManager'),
+    ControlPanel: () => ipcRenderer.send('ControlPanel'),
 });
 
 contextBridge.exposeInMainWorld('settingsAPI', {

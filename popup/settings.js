@@ -31,3 +31,7 @@ function applyTheme(isLight) {
     document.body.classList.remove('light-theme');
   }
 }
+
+document.getElementById("btn_Statistic").addEventListener("click", () => {
+  window.location.href = "statistic.html";
+});

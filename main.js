@@ -1,13 +1,20 @@
-const { app, Tray, shell, BrowserWindow, ipcMain } = require("electron");
+const { app, Tray, shell, BrowserWindow, ipcMain, clipboard } = require("electron");
+const { exec } = require("child_process");
 const path = require("path");
 
 let Store;
+let isFocused = false;
 
 const {
   OpennerApp,
   CleanerTrash,
   CleanerTemp,
   NotepadPlusPlus,
+  getLocalIP,
+  getPublicIP,
+  getFormattedDateTime,
+  TaskManager,
+  ControlPanel,
 } = require("./systeme/utils.js");
 
 let tray = null;
@@ -18,12 +25,27 @@ if (!gotTheLock) {
   app.quit();
 }
 
-ipcMain.handle('get-app-version', () => {
+ipcMain.handle("get-app-version", () => {
   return app.getVersion();
 });
 
-app.whenReady().then(async () => {
+ipcMain.handle("get-trash-count", () => {
+  return new Promise((resolve, reject) => {
+    exec(
+      'powershell "(New-Object -ComObject Shell.Application).NameSpace(10).Items().Count"',
+      (err, stdout) => {
+        if (err) {
+          resolve(0);
+        } else {
+          const count = parseInt(stdout.trim(), 10) || 0;
+          resolve(count);
+        }
+      }
+    );
+  });
+});
 
+app.whenReady().then(async () => {
   const StoreModule = await import("electron-store");
   Store = StoreModule.default;
   store = new Store();
@@ -33,6 +55,21 @@ app.whenReady().then(async () => {
   ipcMain.handle("set-setting", (event, key, value) => {
     store.set(key, value);
     return true;
+  });
+
+  ipcMain.handle('copy-ip', () => {
+    const ip = getLocalIP();
+    clipboard.writeText(ip);
+  });
+
+  ipcMain.handle('copy-public-ip',async () => {
+    const ip = await getPublicIP();
+    clipboard.writeText(ip);
+  });
+
+  ipcMain.handle('get-formatted-date-time', () => {
+    const dateTime = getFormattedDateTime();
+    clipboard.writeText(dateTime);
   });
 
   popupWindow = new BrowserWindow({
@@ -52,15 +89,26 @@ app.whenReady().then(async () => {
 
   popupWindow.loadFile(path.join(__dirname, "popup", "popup.html"));
 
+  popupWindow.on("focus", () => {
+    isFocused = true;
+    popupWindow.webContents.send('focus-changed', true);
+  });
+
   popupWindow.on("blur", () => {
     popupWindow.hide();
+    isFocused = false;
+    popupWindow.webContents.send('focus-changed', false);
   });
-  
+
+  ipcMain.handle("get-focus", () => {
+    return isFocused;
+  });
+
   if (app.isPackaged) {
     app.setLoginItemSettings({
-    openAtLogin: true,
-    path: app.getPath("exe"),
-  });
+      openAtLogin: true,
+      path: app.getPath("exe"),
+    });
   }
 
   tray = new Tray(path.join(__dirname, "assets/", "icon3.png"));
@@ -73,6 +121,8 @@ app.whenReady().then(async () => {
     OpennerCalc: () => OpennerApp("calc"),
     OpenChatGPT: () => shell.openExternal("https://chatgpt.com/"),
     OpenAppData: () => shell.openPath(app.getPath("appData")),
+    TaskManager: TaskManager,
+    ControlPanel: ControlPanel,
   };
 
   for (const [actionName, handler] of Object.entries(actionHandlers)) {

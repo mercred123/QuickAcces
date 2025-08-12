@@ -1,4 +1,6 @@
 const { exec } = require("child_process");
+const os = require('os');
+const https = require('https');
 
 function OpennerApp(app) {
     exec(`${app}`)
@@ -16,4 +18,47 @@ function NotepadPlusPlus() {
     exec('"C:\\Program Files\\Notepad++\\notepad++.exe"')
 }
 
-module.exports = { OpennerApp, CleanerTrash, CleanerTemp, NotepadPlusPlus };
+function getLocalIP() {
+  const interfaces = os.networkInterfaces();
+  for (let name of Object.keys(interfaces)) {
+    for (let iface of interfaces[name]) {
+      if (iface.family === 'IPv4' && !iface.internal) {
+        return iface.address;
+      }
+    }
+  }
+}
+
+function getPublicIP() {
+  return new Promise((resolve, reject) => {
+    https.get('https://api.ipify.org?format=json', (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try {
+          const json = JSON.parse(data);
+          resolve(json.ip);
+        } catch (err) {
+          reject(err);
+        }
+      });
+    }).on('error', (err) => reject(err));
+  });
+}
+
+function getFormattedDateTime() {
+  const now = new Date();
+  const date = now.toISOString().slice(0, 10); // YYYY-MM-DD
+  const time = now.toTimeString().slice(0, 8); // HH:MM:SS
+  return `${date} ${time}`;
+}
+
+function TaskManager() {
+    exec('taskmgr');
+}
+
+function ControlPanel() {
+    exec('control');
+}
+
+module.exports = { OpennerApp, CleanerTrash, CleanerTemp, NotepadPlusPlus, getLocalIP, getPublicIP, getFormattedDateTime, TaskManager, ControlPanel };
