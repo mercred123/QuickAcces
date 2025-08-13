@@ -1,6 +1,6 @@
 {
   "name": "quickacces_custom",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "description": "A custom Electron application for quick access",
   "main": "main.js",
   "scripts": {
