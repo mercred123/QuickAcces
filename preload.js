@@ -1,7 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
-    CleanerTrash: () => ipcRenderer.send('CleanerTrash'),
+    CleanerTrash: () => ipcRenderer.invoke('CleanerTrash'),
     CleanerTemp: () => ipcRenderer.send('CleanerTemp'),
     NotepadPlusPlus: () => ipcRenderer.send('NotepadPlusPlus'),
     OpennerPaint: () => ipcRenderer.send('OpennerPaint'),
@@ -19,6 +19,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getFormattedDateTime: () => ipcRenderer.invoke('get-formatted-date-time'),
     TaskManager: () => ipcRenderer.send('TaskManager'),
     ControlPanel: () => ipcRenderer.send('ControlPanel'),
+    ProgramFilesPath: () => ipcRenderer.send('ProgramFilesPath'),
 });
 
 contextBridge.exposeInMainWorld('settingsAPI', {

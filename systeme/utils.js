@@ -1,13 +1,19 @@
 const { exec } = require("child_process");
 const os = require('os');
 const https = require('https');
+const { shell } = require("electron");
 
 function OpennerApp(app) {
     exec(`${app}`)
 }
 
 function CleanerTrash() {
-    exec('PowerShell.exe -Command "Clear-RecycleBin -Force"')
+  return new Promise((resolve, reject) => {
+    exec('PowerShell.exe -Command "Clear-RecycleBin -Force"', (err, stdout, stderr) => {
+      if (err) reject(err);
+      else resolve(true);
+    });
+  });
 }
 
 function CleanerTemp() {
@@ -16,6 +22,10 @@ function CleanerTemp() {
 
 function NotepadPlusPlus() {
     exec('"C:\\Program Files\\Notepad++\\notepad++.exe"')
+}
+
+function ProgramFilesPath() {
+  shell.openPath('C:\\Program Files')
 }
 
 function getLocalIP() {
@@ -61,4 +71,4 @@ function ControlPanel() {
     exec('control');
 }
 
-module.exports = { OpennerApp, CleanerTrash, CleanerTemp, NotepadPlusPlus, getLocalIP, getPublicIP, getFormattedDateTime, TaskManager, ControlPanel };
+module.exports = { OpennerApp, CleanerTrash, CleanerTemp, NotepadPlusPlus, getLocalIP, getPublicIP, getFormattedDateTime, TaskManager, ControlPanel, ProgramFilesPath };

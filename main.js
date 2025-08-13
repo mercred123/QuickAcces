@@ -1,4 +1,11 @@
-const { app, Tray, shell, BrowserWindow, ipcMain, clipboard } = require("electron");
+const {
+  app,
+  Tray,
+  shell,
+  BrowserWindow,
+  ipcMain,
+  clipboard,
+} = require("electron");
 const { exec } = require("child_process");
 const path = require("path");
 
@@ -15,6 +22,7 @@ const {
   getFormattedDateTime,
   TaskManager,
   ControlPanel,
+  ProgramFilesPath,
 } = require("./systeme/utils.js");
 
 let tray = null;
@@ -57,17 +65,17 @@ app.whenReady().then(async () => {
     return true;
   });
 
-  ipcMain.handle('copy-ip', () => {
+  ipcMain.handle("copy-ip", () => {
     const ip = getLocalIP();
     clipboard.writeText(ip);
   });
 
-  ipcMain.handle('copy-public-ip',async () => {
+  ipcMain.handle("copy-public-ip", async () => {
     const ip = await getPublicIP();
     clipboard.writeText(ip);
   });
 
-  ipcMain.handle('get-formatted-date-time', () => {
+  ipcMain.handle("get-formatted-date-time", () => {
     const dateTime = getFormattedDateTime();
     clipboard.writeText(dateTime);
   });
@@ -91,17 +99,26 @@ app.whenReady().then(async () => {
 
   popupWindow.on("focus", () => {
     isFocused = true;
-    popupWindow.webContents.send('focus-changed', true);
+    popupWindow.webContents.send("focus-changed", true);
   });
 
   popupWindow.on("blur", () => {
     popupWindow.hide();
     isFocused = false;
-    popupWindow.webContents.send('focus-changed', false);
+    popupWindow.webContents.send("focus-changed", false);
   });
 
   ipcMain.handle("get-focus", () => {
     return isFocused;
+  });
+
+  ipcMain.handle("CleanerTrash", async () => {
+    try {
+      await CleanerTrash();
+      return true;
+    } catch {
+      return false;
+    }
   });
 
   if (app.isPackaged) {
@@ -114,7 +131,6 @@ app.whenReady().then(async () => {
   tray = new Tray(path.join(__dirname, "assets/", "icon3.png"));
 
   const actionHandlers = {
-    CleanerTrash: CleanerTrash,
     CleanerTemp: CleanerTemp,
     NotepadPlusPlus: NotepadPlusPlus,
     OpennerPaint: () => OpennerApp("mspaint"),
@@ -123,6 +139,7 @@ app.whenReady().then(async () => {
     OpenAppData: () => shell.openPath(app.getPath("appData")),
     TaskManager: TaskManager,
     ControlPanel: ControlPanel,
+    ProgramFilesPath: ProgramFilesPath,
   };
 
   for (const [actionName, handler] of Object.entries(actionHandlers)) {

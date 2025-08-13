@@ -11,11 +11,33 @@ const buttons = {
   btn_DateTime: "getFormattedDateTime",
   btn_TaskManager: "TaskManager",
   btn_ControlPanel: "ControlPanel",
+  btn_ProgramFiles: "ProgramFilesPath",
+};
+
+const confirmButtons = {
+  btn_Dustbin: {
+    title: "Vider la corbeille",
+    message: "Voulez-vous vraiment vider la corbeille ?",
+    afterAction: refreshTrashCount
+  },
+  btn_TrashTemp: {
+    title: "Nettoyer %temp%",
+    message: "Voulez-vous vraiment vider %temp% ?",
+    afterAction: null
+  }
 };
 
 for (const [btnId, actionName] of Object.entries(buttons)) {
   document.getElementById(btnId).addEventListener("click", () => {
-    window.electronAPI[actionName]();
+    if (confirmButtons[btnId]) {
+      const { title, message, afterAction } = confirmButtons[btnId];
+      showFloatingPopup(title, message, async () => {
+        await window.electronAPI[actionName]();
+        if (afterAction) await afterAction();
+      });
+    } else {
+      window.electronAPI[actionName]();
+    }
   });
 }
 
@@ -65,3 +87,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+function showFloatingPopup(title, message, onConfirm) {
+  document.getElementById("floatingPopupTitle").textContent = title;
+  document.getElementById("floatingPopupMessage").textContent = message;
+  document.getElementById("floatingPopup").style.display = "flex";
+
+  const okBtn = document.getElementById("floatingPopupOk");
+  const cancelBtn = document.getElementById("floatingPopupCancel");
+
+  // Supprimer les anciens events
+  okBtn.replaceWith(okBtn.cloneNode(true));
+  cancelBtn.replaceWith(cancelBtn.cloneNode(true));
+
+  // Récupérer les nouveaux
+  const newOkBtn = document.getElementById("floatingPopupOk");
+  const newCancelBtn = document.getElementById("floatingPopupCancel");
+
+  newOkBtn.addEventListener("click", () => {
+    hideFloatingPopup();
+    if (typeof onConfirm === "function") onConfirm();
+  });
+
+  newCancelBtn.addEventListener("click", hideFloatingPopup);
+}
+
+function hideFloatingPopup() {
+  document.getElementById("floatingPopup").style.display = "none";
+}
