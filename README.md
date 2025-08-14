@@ -20,6 +20,8 @@ No more hunting through menus or remembering complex shortcuts — everything yo
 
 This project is licensed under the MIT License.
 Feel free to use, modify, and redistribute it.
+
+
 🤝 Contributing
 
     Fork the repository
