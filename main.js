@@ -38,6 +38,10 @@ ipcMain.handle("get-app-version", () => {
 });
 
 ipcMain.handle("get-trash-count", () => {
+  return getTrashCount();
+});
+
+function getTrashCount() {
   return new Promise((resolve, reject) => {
     exec(
       'powershell "(New-Object -ComObject Shell.Application).NameSpace(10).Items().Count"',
@@ -51,12 +55,14 @@ ipcMain.handle("get-trash-count", () => {
       }
     );
   });
-});
+}
 
 app.whenReady().then(async () => {
   const StoreModule = await import("electron-store");
   Store = StoreModule.default;
   store = new Store();
+
+  if (!store.has("buttonsClicked")) store.set("buttonsClicked", 0);
 
   ipcMain.handle("get-settings", () => store.store);
 
@@ -78,6 +84,17 @@ app.whenReady().then(async () => {
   ipcMain.handle("get-formatted-date-time", () => {
     const dateTime = getFormattedDateTime();
     clipboard.writeText(dateTime);
+  });
+
+  ipcMain.on("increment-button", () => {
+    const count = store.get("buttonsClicked");
+    store.set("buttonsClicked", count + 1);
+  });
+
+  ipcMain.handle("get-stats", () => {
+    return {
+      buttonsClicked: store.get("buttonsClicked"),
+    };
   });
 
   popupWindow = new BrowserWindow({

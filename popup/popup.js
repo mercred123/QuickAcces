@@ -43,6 +43,7 @@ for (const [btnId, actionName] of Object.entries(buttons)) {
 
 document.getElementById("btn_Settings").addEventListener("click", () => {
   window.location.href = "settings.html";
+  refreshTrashCount();
 });
 
 window.addEventListener("DOMContentLoaded", async () => {
@@ -96,11 +97,9 @@ function showFloatingPopup(title, message, onConfirm) {
   const okBtn = document.getElementById("floatingPopupOk");
   const cancelBtn = document.getElementById("floatingPopupCancel");
 
-  // Supprimer les anciens events
   okBtn.replaceWith(okBtn.cloneNode(true));
   cancelBtn.replaceWith(cancelBtn.cloneNode(true));
 
-  // Récupérer les nouveaux
   const newOkBtn = document.getElementById("floatingPopupOk");
   const newCancelBtn = document.getElementById("floatingPopupCancel");
 
@@ -115,3 +114,9 @@ function showFloatingPopup(title, message, onConfirm) {
 function hideFloatingPopup() {
   document.getElementById("floatingPopup").style.display = "none";
 }
+
+document.querySelectorAll(".button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    window.electronAPI.incrementButton();
+  });
+});

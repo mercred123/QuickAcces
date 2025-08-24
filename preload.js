@@ -20,6 +20,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
     TaskManager: () => ipcRenderer.send('TaskManager'),
     ControlPanel: () => ipcRenderer.send('ControlPanel'),
     ProgramFilesPath: () => ipcRenderer.send('ProgramFilesPath'),
+    incrementButton: () => ipcRenderer.send("increment-button"),
+    getStats: () => ipcRenderer.invoke("get-stats"),
 });
 
 contextBridge.exposeInMainWorld('settingsAPI', {

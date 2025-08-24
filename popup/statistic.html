@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="popup.css"/>
     <link rel="stylesheet" href="themes.css"/>
+    <link rel="stylesheet" href="statisticStyle.css">
     <title>Statistique</title>
 </head>
 <body>
@@ -13,7 +14,11 @@
       <p>Regardez vos statistique ici.</p>
       <button title="Retour" aria-label="Retour" id="btn_Back">←</button>
     
-    <div class="tenor-gif-embed" data-postid="13868954032143231320" data-share-method="host" data-aspect-ratio="1.43931" data-width="100%"><a href="https://tenor.com/view/coming-soon-coming-soon-gta-gif-13868954032143231320">Coming Soon Coming Soon Gta GIF</a>from <a href="https://tenor.com/search/coming+soon-gifs">Coming Soon GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    <div class="statistic" id="stats">
+      <div class="statisticItem">
+        <p class="statisticLabel">Nombre de boutons cliqués</p>
+        <p id="countButtons" class="statisticValue">0</p>
+      </div>
     </div>
 </body>
 <script src="statistic.js"></script>

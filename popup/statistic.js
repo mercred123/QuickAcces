@@ -17,3 +17,8 @@ function applyTheme(isLight) {
     document.body.classList.remove("light-theme");
   }
 }
+;
+window.addEventListener("DOMContentLoaded", async () => {
+  const stats = await window.electronAPI.getStats();
+  document.getElementById("countButtons").textContent = stats.buttonsClicked;
+});
