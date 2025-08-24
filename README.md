@@ -1,7 +1,7 @@
 📌 QuickAcces
 
 QuickAcces is an Electron JS application that lets you quickly execute common system actions through a simple and intuitive UI.
-No more hunting through menus or remembering complex shortcuts — everything you need is just a click away!
+No more hunting through menus or remembering complex shortcuts everything you need is just a click away!
 
 📥 Installation
 
@@ -20,6 +20,8 @@ No more hunting through menus or remembering complex shortcuts — everything yo
 
 This project is licensed under the MIT License.
 Feel free to use, modify, and redistribute it.
+
+
 🤝 Contributing
 
     Fork the repository
