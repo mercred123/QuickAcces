@@ -36,7 +36,7 @@ Feel free to use, modify, and redistribute it.
 
 **next features that will soon be developed :**
 
-$${\color{red}ALL \space OF \space THE \space FOLLOWING \space FEATURES \space ARE \space IN \space PROGRESS \space BUT \space MAY \space NOT \space COME \space RIGHT \space AWAY
+$${\color{red}ALL \space OF \space THE \space FOLLOWING \space FEATURES \space ARE \space IN \space PROGRESS \space BUT \space MAY \space NOT \space COME \space RIGHT \space AWAY}$$
 
 - [ ] multi-language system
 - [ ] ability to rename buttons
