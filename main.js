@@ -145,7 +145,7 @@ app.whenReady().then(async () => {
     });
   }
 
-  tray = new Tray(path.join(__dirname, "assets/", "icon3.png"));
+  tray = new Tray(path.join(__dirname, "assets/icon/", "icon3.png"));
 
   const actionHandlers = {
     CleanerTemp: CleanerTemp,

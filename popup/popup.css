@@ -24,10 +24,11 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   max-height: calc(100vh - 20px);
   overflow-y: auto;
+  position: relative;
 }
 
 h1 {
-  font-size: 20px;
+  font-size: 30px;
   margin: 0 0 5px;
   color: var(--header-color);
 }
@@ -53,6 +54,16 @@ p {
   position: relative;
 }
 
+.button i, 
+.button p {
+  margin: 0;
+  padding: 0;
+}
+
+.button i {
+  margin-right: 5px;
+}
+
 .button:hover {
   background: var(--button-hover);
   border-color: var(--button-border-hover);
@@ -68,7 +79,7 @@ p {
 }
 
 #btn_Settings {
-  position: fixed;
+  position: absolute;
   top: 20px;
   right: 20px;
   width: 30px;
@@ -77,13 +88,13 @@ p {
   background: transparent;
   cursor: pointer;
   font-size: 24px;
-  color: #4fc3f7;
+  color: var(--text-color);
   user-select: none;
   padding: 0;
 }
 
 #btn_Settings:hover {
-  color: var(--paragraph-color);
+  color: var(--ButtonSettings-hover);
 }
 
 #btn_Back {
@@ -96,13 +107,13 @@ p {
   background: transparent;
   cursor: pointer;
   font-size: 24px;
-  color: var(--paragraph-color);
+  color: var(--text-color);
   user-select: none;
   padding: 0;
 }
 
 #btn_Back:hover {
-  color: var(--paragraph-color);
+  color: var(--ButtonSettings-hover);
 }
 
 .checkbox {
@@ -173,8 +184,8 @@ p {
   padding: 10px;
   font-size: 15px;
   font-weight: bold;
-  background: var(--button-background);
-  border: 1px solid var(--button-border);
+  background: var(--searchBar-background);
+  border: 1px solid var(--searchBar-border);
   border-radius: 30px;
   color: var(--button-color);
   outline: none;

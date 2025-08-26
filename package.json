@@ -22,7 +22,7 @@
     },
     "win": {
       "target": "nsis",
-      "icon": "assets/icon3.png"
+      "icon": "assets/icon/icon3.png"
     },
     "nsis": {
       "createDesktopShortcut": false,

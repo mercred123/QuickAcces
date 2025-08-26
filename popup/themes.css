@@ -1,21 +1,24 @@
 :root {
-  --background-color: #1e1e1e;
-  --text-color: #ffffff;
-  --background-color-popup: #252526;
-  --paragraph-color: #aaaaaa;
+  --background-color: #0A0A0A;
+  --text-color: #E5E5E5;
+  --background-color-popup: #0A0A0A;
+  --paragraph-color: #E5E5E5;
   --header-color: #4fc3f7;
-  --button-background: #333333;
-  --button-hover: #444444;
+  --button-background: #171717;
+  --button-hover: #1C1C1C;
   --button-active: #555555;
   --button-color: #ffffff;
-  --button-border: #444;
-  --button-border-hover: #555;
+  --button-border: #3D3D3D;
+  --button-border-hover: #3D3D3D;
+  --searchBar-background: #262626;
+  --searchBar-border: #3D3D3D;
+  --ButtonSettings-hover: rgba(255, 255, 255, 0.603);
 }
 
 .light-theme {
-  --background-color:#fdf5e2;
+  --background-color:#fdf1cb;
   --text-color: #000000;
-  --background-color-popup:#fdf5e2;
+  --background-color-popup:#fdf1cb;
   --paragraph-color: #000000;
   --header-color: #063be9;
   --button-background: #8f8d8d;
@@ -24,18 +27,24 @@
   --button-color: #000000;
   --button-border: #8f8d8d;
   --button-border-hover: rgb(73, 70, 70);
+  --searchBar-background: var(--button-background);
+  --searchBar-border: #3D3D3D;
+  --ButtonSettings-hover: rgba(39, 38, 38, 0.479);
 }
 
 .dark-theme {
-  --background-color: #1e1e1e;
-  --text-color: #ffffff;
-  --background-color-popup: #252526;
-  --paragraph-color: #aaaaaa;
+  --background-color: #0A0A0A;
+  --text-color: #E5E5E5;
+  --background-color-popup: #0A0A0A;
+  --paragraph-color: #E5E5E5;
   --header-color: #4fc3f7;
-  --button-background: #333333;
-  --button-hover: #444444;
+  --button-background: #171717;
+  --button-hover: #1C1C1C;
   --button-active: #555555;
   --button-color: #ffffff;
-  --button-border: #444;
-  --button-border-hover: #555;
+  --button-border: #3D3D3D;
+  --button-border-hover: #3D3D3D;
+  --searchBar-background: #262626;
+  --searchBar-border: #3D3D3D;
+  --ButtonSettings-hover: rgba(255, 255, 255, 0.603);
 }

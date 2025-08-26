@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="popup.css"/>
-    <link rel="stylesheet" href="themes.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <title>Paramètres</title>
-  </head>
-  <body>
-    <div class="popup-container">
-      <h1>Paramètres</h1>
-      <p>Configurez vos options ici.</p>
-      <button title="Retour" aria-label="Retour" id="btn_Back">←</button>
-      <div class="themeToggle">
-        <input type="checkbox" class="checkbox" id="toggle-theme" />
-        <label for="toggle-theme" class="checkbox-label">
-          <i class="fas fa-moon"></i>
-          <i class="fas fa-sun"></i>
-          <span class="ball"></span>
-        </label>
-      </div>
-      <button class="button" id="btn_Statistic">📊 Statistique</button>
-      <!--TEMPORAIRE LES BR--> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <p>Version de l’application : <span id="app-version">...</span></p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="popup.css" />
+  <link rel="stylesheet" href="themes.css" />
+  <title>Paramètres</title>
+</head>
+<body>
+  <div class="popup-container">
+    <h1>Paramètres</h1>
+    <p>Configurez vos options ici.</p>
+    <button title="Retour" aria-label="Retour" id="btn_Back">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <div class="themeToggle">
+      <input type="checkbox" class="checkbox" id="toggle-theme" />
+      <label for="toggle-theme" class="checkbox-label">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <span class="ball"></span>
+      </label>
     </div>
-  </body>
-  <script src="settings.js"></script>
+    <button class="button" id="btn_Statistic">📊 Statistique</button>
+    <!--TEMPORAIRE LES BR--> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <p>Version de l’application : <span id="app-version">...</span></p>
+  </div>
+</body>
+<script src="settings.js"></script>
+<script src="https://kit.fontawesome.com/2357eac158.js" crossorigin="anonymous"></script>
 </html>
