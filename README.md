@@ -33,3 +33,15 @@ Feel free to use, modify, and redistribute it.
     Push the branch (git push origin feature/my-feature)
 
     Open a Pull Request
+
+**next features that will soon be developed :**
+
+$${\color{red}ALL \space OF \space THE \space FOLLOWING \space FEATURES \space ARE \space IN \space PROGRESS \space BUT \space MAY \space NOT \space COME \space RIGHT \space AWAY
+
+- [ ] multi-language system
+- [ ] ability to rename buttons
+- [ ] ability to change the order of buttons and make groups
+- [ ] more complete and redesigned parameter
+- [ ] statistics overhaul
+- [ ] complete redesign of the application
+- [ ] always more buttons
