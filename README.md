@@ -47,7 +47,7 @@ ___
 
 $${\color{red}ALL \space OF \space THE \space FOLLOWING \space FEATURES \space ARE \space IN \space PROGRESS \space BUT \space MAY \space NOT \space COME \space RIGHT \space AWAY}$$
 
-- [ ] multi-language system
+- [x] multi-language system
 - [ ] ability to rename buttons
 - [ ] ability to change the order of buttons and make groups
 - [ ] more complete and redesigned parameter
