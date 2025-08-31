@@ -1,7 +1,7 @@
 const { exec } = require("child_process");
 const os = require('os');
 const https = require('https');
-const { shell } = require("electron");
+const { shell, app } = require("electron");
 
 function OpennerApp(app) {
     exec(`${app}`)
@@ -71,4 +71,8 @@ function ControlPanel() {
     exec('control');
 }
 
-module.exports = { OpennerApp, CleanerTrash, CleanerTemp, NotepadPlusPlus, getLocalIP, getPublicIP, getFormattedDateTime, TaskManager, ControlPanel, ProgramFilesPath };
+function GetLanguage() {
+  return app.getLocale();
+}
+
+module.exports = { GetLanguage, OpennerApp, CleanerTrash, CleanerTemp, NotepadPlusPlus, getLocalIP, getPublicIP, getFormattedDateTime, TaskManager, ControlPanel, ProgramFilesPath };

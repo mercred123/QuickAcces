@@ -6,19 +6,18 @@
   <link rel="stylesheet" href="popup.css" />
   <link rel="stylesheet" href="themes.css" />
   <link rel="stylesheet" href="statisticStyle.css">
-  <title>Statistique</title>
 </head>
 <body>
   <div class="popup-container">
-    <h1>Statistique</h1>
-    <p>Regardez vos statistique ici.</p>
+    <h1><span id="StatisticTitle">.</span></h1>
+    <p><span id="StatisticParagraph">.</span></p>
     <button title="Retour" aria-label="Retour" id="btn_Back">
       <i class="fa-solid fa-arrow-left"></i>
     </button>
 
     <div class="statistic" id="stats">
       <div class="statisticItem">
-        <p class="statisticLabel">Nombre de boutons cliqués</p>
+        <p class="statisticLabel"><span id="btn_statsButtonClicked">.</span></p>
         <p id="countButtons" class="statisticValue">0</p>
       </div>
     </div>

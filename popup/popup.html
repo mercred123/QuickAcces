@@ -8,70 +8,68 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-  <title>QuickAccess</title>
 </head>
 <body>
   <div class="popup-container">
     <button id="btn_Settings" title="Paramètres" aria-label="Paramètres">
       <i class="fa-solid fa-gears"></i>
     </button>
-    <h1>QuickAccess</h1>
-    <p>Accès rapide à vos actions courantes</p>
-    <input type="text" id="searchBar" placeholder="Rechercher une action..." autocomplete="off" />
+    <br>
+    <input type="text" id="searchBar" placeholder="." autocomplete="off" />
     <ul id="autocompleteList"></ul>
 
     <button class="button" id="btn_Dustbin">
       <i class="fa-solid fa-trash-can"></i>
-      Vider la Corbeille
+      <span id="span_Dustbin">.</span>
       <span class="badge" id="trashCount">0</span>
     </button>
     <button class="button" id="btn_TrashTemp">
       <i class="fa-solid fa-broom"></i>
-      Nettoyer %temp%
+      <span id="span_TrashTemp">.</span>
     </button>
     <button class="button" id="btn_NotepadPlusPlus">
       <i class="fa-solid fa-clipboard"></i>
-      Ouvrir Notepad++
+      <span id="span_NotepadPlusPlus">.</span>
     </button>
     <button class="button" id="btn_Paint">
       <i class="fa-solid fa-image"></i>
-      Ouvrir Paint
+      <span id="span_Paint">.</span>
     </button>
     <button class="button" id="btn_Calc">
       <i class="fa-solid fa-calculator"></i>
-      Ouvrir Calculatrice
+      <span id="span_Calc">.</span>
     </button>
     <button class="button" id="btn_ChatGPT">
       <i class="fa-solid fa-earth-americas"></i>
-      Ouvrir ChatGPT
+      <span id="span_ChatGPT">.</span>
     </button>
     <button class="button" id="btn_AppData">
       <i class="fa-solid fa-folder"></i>
-      Ouvrir dossier appData
+      <span id="span_AppData">.</span>
     </button>
     <button class="button" id="btn_IpPrivate">
       <i class="fa-solid fa-network-wired"></i>
-      Copie l'adresse ip privé de l'appareil
+      <span id="span_IpPrivate">.</span>
     </button>
     <button class="button" id="btn_IpPublic">
       <i class="fa-solid fa-network-wired"></i>
-      Copie l'adresse ip public de l'appareil
+      <span id="span_IpPublic">.</span>
     </button>
     <button class="button" id="btn_DateTime">
       <i class="fa-solid fa-calendar-days"></i>
-      Copier la date et l'heure
+      <span id="span_DateTime">.</span>
     </button>
     <button class="button" id="btn_TaskManager">
       <i class="fa-solid fa-chart-simple"></i>
-      Ouvrir le gestionnaire de tâches
+      <span id="span_TaskManager">.</span>
     </button>
     <button class="button" id="btn_ControlPanel">
       <i class="fa-solid fa-gear"></i>
-      Ouvrir le panneau de configuration
+      <span id="span_ControlPanel">.</span>
     </button>
     <button class="button" id='btn_ProgramFiles'>
       <i class="fa-solid fa-folder"></i>
-      Ouvrir le dossier Program Files
+      <span id="span_ProgramFiles">.</span>
     </button>
   </div>
   <div id="floatingPopup" class="floating-popup">
@@ -79,8 +77,8 @@
       <h2 id="floatingPopupTitle">Titre</h2>
       <p id="floatingPopupMessage">Message</p>
       <div class="popup-buttons">
-        <button id="floatingPopupOk">OK</button>
-        <button id="floatingPopupCancel">Annuler</button>
+        <button id="floatingPopupOk"></button>
+        <button id="floatingPopupCancel"></button>
       </div>
     </div>
   </div>

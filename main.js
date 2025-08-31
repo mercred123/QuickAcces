@@ -23,6 +23,7 @@ const {
   TaskManager,
   ControlPanel,
   ProgramFilesPath,
+  GetLanguage,
 } = require("./systeme/utils.js");
 
 let tray = null;
@@ -109,6 +110,7 @@ app.whenReady().then(async () => {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
+      nodeIntegration: false,
     },
   });
 
@@ -127,6 +129,25 @@ app.whenReady().then(async () => {
 
   ipcMain.handle("get-focus", () => {
     return isFocused;
+  });
+
+  ipcMain.handle("Language", (event, argLang) => {
+    const storedLang = store.get("language");
+    if (storedLang && storedLang.trim() !== "") {
+      return storedLang;
+    }
+
+    const systemLang = GetLanguage();
+    store.set("language", systemLang);
+    return systemLang;
+  });
+
+  ipcMain.handle("set-language", (event, lang) => {
+    if (lang && lang.trim() !== "") {
+      store.set("language", lang);
+      return true;
+    }
+    return false;
   });
 
   ipcMain.handle("CleanerTrash", async () => {

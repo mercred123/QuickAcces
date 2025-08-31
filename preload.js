@@ -22,6 +22,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ProgramFilesPath: () => ipcRenderer.send('ProgramFilesPath'),
     incrementButton: () => ipcRenderer.send("increment-button"),
     getStats: () => ipcRenderer.invoke("get-stats"),
+    Language: () => ipcRenderer.invoke("Language"),
+    setLanguage: (lang) => ipcRenderer.invoke("set-language", lang),
 });
 
 contextBridge.exposeInMainWorld('settingsAPI', {

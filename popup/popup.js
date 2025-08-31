@@ -14,18 +14,37 @@ const buttons = {
   btn_ProgramFiles: "ProgramFilesPath",
 };
 
-const confirmButtons = {
+const confirmButtonsFR = {
   btn_Dustbin: {
     title: "Vider la corbeille",
     message: "Voulez-vous vraiment vider la corbeille ?",
-    afterAction: refreshTrashCount
+    afterAction: refreshTrashCount,
   },
   btn_TrashTemp: {
     title: "Nettoyer %temp%",
     message: "Voulez-vous vraiment vider %temp% ?",
-    afterAction: null
-  }
+    afterAction: null,
+  },
 };
+
+const confirmButtonsUS = {
+  btn_Dustbin: {
+    title: "Empty Trash",
+    message: "Do you really want to empty the trash?",
+    afterAction: refreshTrashCount,
+  },
+  btn_TrashTemp: {
+    title: "Clean %temp%",
+    message: "Do you really want to clean %temp%?",
+    afterAction: null,
+  },
+};
+
+let confirmButtons = {}; // variable globale
+window.electronAPI.Language().then(lang => {
+  const shortLang = lang.slice(0, 2).toLowerCase();
+  confirmButtons = shortLang === "fr" ? confirmButtonsFR : confirmButtonsUS;
+});
 
 for (const [btnId, actionName] of Object.entries(buttons)) {
   document.getElementById(btnId).addEventListener("click", () => {
@@ -80,9 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchBar = document.getElementById("searchBar");
   const buttons = Array.from(document.querySelectorAll(".button"));
 
-  searchBar.addEventListener("input", e => {
+  searchBar.addEventListener("input", (e) => {
     const query = e.target.value.toLowerCase();
-    buttons.forEach(btn => {
+    buttons.forEach((btn) => {
       const match = btn.innerText.toLowerCase().includes(query);
       btn.style.display = match ? "block" : "none";
     });
@@ -115,8 +134,34 @@ function hideFloatingPopup() {
   document.getElementById("floatingPopup").style.display = "none";
 }
 
-document.querySelectorAll(".button").forEach(btn => {
+document.querySelectorAll(".button").forEach((btn) => {
   btn.addEventListener("click", () => {
     window.electronAPI.incrementButton();
   });
 });
+
+async function applyTranslations() {
+  const lang = await window.electronAPI.Language();
+  const shortLang = lang.slice(0, 2).toLowerCase();
+  const jsonPath =
+    shortLang === "fr" ? "./languages/FR.json" : "./languages/US.json";
+  const res = await fetch(jsonPath);
+  if (!res.ok) throw new Error("JSON introuvable : " + jsonPath);
+  const texts = await res.json();
+  try {
+    Object.keys(texts).forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      if (el.tagName === "INPUT") {
+        el.placeholder = texts[id];
+      } else {
+        el.textContent = texts[id];
+      }
+    });
+  } catch (err) {
+    console.error("Erreur chargement traduction :", err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => applyTranslations());

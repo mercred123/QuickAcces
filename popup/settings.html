@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="popup.css" />
   <link rel="stylesheet" href="themes.css" />
-  <title>Paramètres</title>
 </head>
 <body>
   <div class="popup-container">
-    <h1>Paramètres</h1>
-    <p>Configurez vos options ici.</p>
+    <h1><span id="settingTitle">.</span></h1>
+    <p><span id="settingParagraph">.</span></p>
     <button title="Retour" aria-label="Retour" id="btn_Back">
       <i class="fa-solid fa-arrow-left"></i>
     </button>
@@ -22,9 +21,9 @@
         <span class="ball"></span>
       </label>
     </div>
-    <button class="button" id="btn_Statistic">📊 Statistique</button>
-    <!--TEMPORAIRE LES BR--> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <p>Version de l’application : <span id="app-version">...</span></p>
+    <button class="button" id="btn_Statistic">📊 <span id="btn_Statistics">.</span></button>
+    <!--TEMPORAIRE LES BR--> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <p><span id="VersionApp">.</span><span id="app-version">...</span></p>
   </div>
 </body>
 <script src="settings.js"></script>
