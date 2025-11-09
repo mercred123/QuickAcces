@@ -25,5 +25,6 @@
   "VersionApp": "Version of the application : ",
   "StatisticTitle": "Statistics",
   "StatisticParagraph": "Look at your statistics here.",
-  "btn_statsButtonClicked": "Number of clicked buttons"
+  "btn_statsButtonClicked": "Number of clicked buttons",
+  "btn_Langue": "Switch language to French"
 }

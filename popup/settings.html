@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="popup.css" />
   <link rel="stylesheet" href="themes.css" />
 </head>
+
 <body>
   <div class="popup-container">
     <h1><span id="settingTitle">.</span></h1>
@@ -22,10 +24,18 @@
       </label>
     </div>
     <button class="button" id="btn_Statistic">📊 <span id="btn_Statistics">.</span></button>
-    <!--TEMPORAIRE LES BR--> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="language-select">
+      <i class="fa-solid fa-bullhorn"></i>
+      <select id="select_Langue" title="Choisir la langue" aria-label="Choisir la langue">
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+    <!--TEMPORAIRE LES BR 3 par button--> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <p><span id="VersionApp">.</span><span id="app-version">...</span></p>
   </div>
 </body>
 <script src="settings.js"></script>
 <script src="https://kit.fontawesome.com/2357eac158.js" crossorigin="anonymous"></script>
+
 </html>

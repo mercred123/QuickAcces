@@ -25,5 +25,6 @@
   "VersionApp": "Version de l'application : ",
   "StatisticTitle": "Statistiques",
   "StatisticParagraph": "Regardez vos statistique ici.",
-  "btn_statsButtonClicked": "Nombre de boutons cliqués"
+  "btn_statsButtonClicked": "Nombre de boutons cliqués",
+  "btn_Langue": "Change la langue vers l'anglais"
 }

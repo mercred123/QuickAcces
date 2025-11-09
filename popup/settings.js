@@ -19,6 +19,8 @@ window.addEventListener("DOMContentLoaded", async () => {
     await window.settingsAPI.setSetting("lightMode", isLight);
     applyTheme(isLight);
   });
+
+  await applyTranslations();
 });
 
 function applyTheme(isLight) {
@@ -34,6 +36,12 @@ function applyTheme(isLight) {
 document.getElementById("btn_Statistic").addEventListener("click", () => {
   window.location.href = "statistic.html";
 });
+
+document.getElementById("select_Langue").addEventListener("change", async (event) => {
+  const selectedLang = event.target.value;
+  await window.electronAPI.setLanguage(selectedLang);
+  await applyTranslations();
+})
 
 async function applyTranslations() {
   const lang = await window.electronAPI.Language();

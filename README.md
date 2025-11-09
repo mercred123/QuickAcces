@@ -48,6 +48,7 @@ ___
 $${\color{red}ALL \space OF \space THE \space FOLLOWING \space FEATURES \space ARE \space IN \space PROGRESS \space BUT \space MAY \space NOT \space COME \space RIGHT \space AWAY}$$
 
 - [x] multi-language system
+- [x] simple system for switching languages (French and English) I need to redo the design
 - [ ] ability to rename buttons
 - [ ] ability to change the order of buttons and make groups
 - [ ] more complete and redesigned parameter
