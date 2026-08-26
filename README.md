@@ -1,3 +1,11 @@
+> [!WARNING]
+> ## ⚠️ DEPRECATED
+>
+> This repository is **deprecated** and is no longer actively maintained.
+>
+> 🚧 **No updates have been made yet.**  
+
+
 📌 QuickAcces
 
 QuickAcces is an Electron JS application that lets you quickly execute common system actions through a simple and intuitive UI.
